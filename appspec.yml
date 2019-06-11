@@ -12,3 +12,10 @@ permissions:
      type:
       - directory
       - file
+hooks:
+   ApplicationStop:
+    - location: scripts/deregister_from_elb.sh
+    - location: scripts/stop_httpd.sh
+   ApplicationStart:
+    - location: scripts/start_httpd.sh
+    - location: scripts/register_with_elb.sh
